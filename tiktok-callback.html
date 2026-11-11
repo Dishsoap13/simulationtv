@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Connecting TikTok</title><link rel="stylesheet" href="style.css"></head>
+<body><main><h1>Connecting TikTok…</h1><p id="msg">Sending you back to the posting tool on your computer.</p>
+<script>
+  // TikTok only redirects to https pages. This page passes the login code to Vampire running on this computer.
+  (function () {
+    var q = window.location.search;
+    if (!q || q.indexOf('code=') < 0 && q.indexOf('error=') < 0) { document.getElementById('msg').textContent = 'No TikTok login code found.'; return; }
+    window.location.replace('http://127.0.0.1:8787/api/tiktok/callback' + q);
+  })();
+</script></main></body></html>
